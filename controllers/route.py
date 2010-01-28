@@ -1,4 +1,3 @@
-import os
 import wsgiref.handlers
 import cgi, logging
 
