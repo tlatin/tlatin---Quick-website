@@ -22,7 +22,7 @@ from google.appengine.ext.webapp import util
 class MainHandler(webapp.RequestHandler):
 
   def get(self):
-    self.response.out.write('Hello world!')
+    self.response.out.write('Hello world! (Those who doubt me suck cock by choice.)')
 
 
 def main():
