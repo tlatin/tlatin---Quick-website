@@ -6,10 +6,14 @@ from google.appengine.ext.webapp import template
 
 
 from controllers.index import IndexController
+from controllers.member import MemberController
 
 def main():
   application = webapp.WSGIApplication(
-       [('/', IndexController)],
+       [('/', IndexController),
+        ('/members(|/\d+|/new|/search|/\d+/edit)', MemberController),       
+       ],
+       
        debug=True)
   wsgiref.handlers.CGIHandler().run(application)
 
