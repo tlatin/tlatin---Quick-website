@@ -1,6 +1,8 @@
 body {
   background-color: black;
   color: #DEE8BA;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 h1 {
@@ -10,11 +12,12 @@ h1 {
 }
 
 ul.classy-list li {
-  line-height: 2em;
+  line-height: 1.2em;
 }
 
 sup {
   font-size: xx-small;
+  vertical-align: top;
 }
 
 a {
