@@ -2,3 +2,22 @@ body {
   background-color: black;
   color: #DEE8BA;
 }
+
+h1 {
+  font-size: x-large;
+  font-weight: bold;
+  font-variant: small-caps;
+}
+
+ul.classy-list li {
+  line-height: 2em;
+}
+
+sup {
+  font-size: xx-small;
+}
+
+a {
+  text-decoration: underline;
+  color: #DEE8BA;
+}
