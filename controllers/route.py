@@ -6,11 +6,11 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 
 
-from controllers.main import MainHandler
+from controllers.index import IndexController
 
 def main():
   application = webapp.WSGIApplication(
-       [('/', MainHandler)],
+       [('/', IndexController)],
        debug=True)
   wsgiref.handlers.CGIHandler().run(application)
 
