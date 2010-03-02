@@ -59,6 +59,10 @@ class MemberController(webapp.RequestHandler):
   
           
   def new(self, params):
+    member = Member.gql('where user=:user', user=users.get_current_user()).get()
+    if member:
+      self.redirect(member.url())
+      return
     template_values = {
       'member_form' : MemberForm(),
       'user' : users.get_current_user()
@@ -74,7 +78,7 @@ class MemberController(webapp.RequestHandler):
       member = data.save(commit=False)
       member.user = users.get_current_user()
       member.put()
-      self.redirect('/')
+      self.redirect(member.url())
       return
     else:
       # Reprint the form

@@ -1,4 +1,4 @@
 {% extends '_layout.html' %}
 {% block content %}
-<p>Welcome {{member.title}} {{member.name}}! Drink up!</p>
+<p>Welcome {% if member.title %}{{member.title}}{% endif %} {{member.name}}! Drink up!</p>
 {% endblock content %}

@@ -10,7 +10,8 @@ class Member(db.Model):
   # scotches = reference from scotches.py
   # comments = reference from comments.py
   
-  
+  def url(self):
+    return '/members/' + str(self.key().id())
   
 class MemberForm(djangoforms.ModelForm):
       class Meta:
