@@ -49,17 +49,16 @@ class ScotchController(webapp.RequestHandler):
     
   def show(self, id):
     current_user = users.get_current_user()
-    member = Member.get_by_id(int(id))
-    # Only you the member can her page
-    if not member or member.user != current_user:
+    scotch = Scotch.get_by_id(int(id))
+    if not scotch:
       self.redirect('/')
       return
 
     template_values = {
-      'member' : member
+      'scotch' : scotch
     }
 
-    path = os.path.join(os.path.dirname(__file__), '..', 'views', 'member_home.html')
+    path = os.path.join(os.path.dirname(__file__), '..', 'views', 'scotch_home.html')
     self.response.out.write(template.render(path, template_values))
   
   def create_scotch(self, params):
@@ -79,3 +78,11 @@ class ScotchController(webapp.RequestHandler):
 
       path = os.path.join(os.path.dirname(__file__), '..', 'views', 'scotch_new.html')
       self.response.out.write(template.render(path, template_values))
+      
+  def list(self):
+    template_values = {
+      'scotches' : Scotch.all()
+    }
+    
+    path = os.path.join(os.path.dirname(__file__), '..', 'views', 'scotch_list.html')
+    self.response.out.write(template.render(path, template_values))

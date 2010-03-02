@@ -1,0 +1,15 @@
+{% extends '_layout.html' %}
+{% block content %}
+  		<h1><a>Scotch List</a></h1>
+<table>
+      {%for scotch in scotches%}
+      <tr>
+        <td>Name:</td><td><a href="{{scotch.url}}">{{scotch.name}}</a></td>
+        <td>Age:</td><td>{{scotch.age}}</td>
+        
+        </tr>
+      {%endfor%}
+</table>
+
+{% endblock content %}
+
