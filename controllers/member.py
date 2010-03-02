@@ -26,16 +26,6 @@ class MemberController(webapp.RequestHandler):
               self.show(url_data[1:])
       else:
           self.list()
-          
-  def new(self, params):
-    template_values = {
-      'member_form' : MemberForm(),
-      'user' : users.get_current_user()
-    }
-    
-    path = os.path.join(os.path.dirname(__file__), '..', 'views', 'member_new.html')
-    self.response.out.write(template.render(path, template_values))
-    
   def post(self, url_data):
     if url_data:
       if '/new' == url_data:
@@ -50,15 +40,42 @@ class MemberController(webapp.RequestHandler):
         self.show(url_data[1:])
     else:
       self.list()
-        
+
+
+  def show(self, id):
+    current_user = users.get_current_user()
+    member = Member.get_by_id(int(id))
+    # Only you the member can her page
+    if not member or member.user != current_user:
+      self.redirect('/')
+      return
+
+    template_values = {
+      'member' : member
+    }
+
+    path = os.path.join(os.path.dirname(__file__), '..', 'views', 'member_home.html')
+    self.response.out.write(template.render(path, template_values))
+  
+          
+  def new(self, params):
+    template_values = {
+      'member_form' : MemberForm(),
+      'user' : users.get_current_user()
+    }
+    
+    path = os.path.join(os.path.dirname(__file__), '..', 'views', 'member_new.html')
+    self.response.out.write(template.render(path, template_values))
+    
   def create_member(self, params):
     data = MemberForm(data=self.request.POST)
-    if data.is_valid():
+    if data.is_valid() and users.get_current_user():
       # Save the data, and redirect to the view page
       member = data.save(commit=False)
       member.user = users.get_current_user()
       member.put()
       self.redirect('/')
+      return
     else:
       # Reprint the form
       template_values = {
