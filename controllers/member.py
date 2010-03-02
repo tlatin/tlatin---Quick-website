@@ -25,7 +25,7 @@ class MemberController(webapp.RequestHandler):
   def new(self, params):
     template_values = {
 
-      }
+    }
     
     path = os.path.join(os.path.dirname(__file__), '..', 'views', 'member_new.html')
     self.response.out.write(template.render(path, template_values))
