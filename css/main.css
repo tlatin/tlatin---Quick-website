@@ -30,3 +30,8 @@ ul.invis li {
   list-style-position:inside;
   text-indent:-40px;
 }
+
+/*This is the class for the auto create errors*/
+ul.errorlist li {
+  color: #FF0000;
+}

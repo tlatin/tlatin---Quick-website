@@ -21,8 +21,6 @@
       {% block heading %}
       {% endblock heading %}
     </h1>
-    
-  </div><!--end top-->
   <span>
   {% if member %}
     <a href="{{ member.logout_url }}" id="l_logout">Log Out</a>
@@ -30,6 +28,7 @@
     <a href="{{login_url}}" id="l_login">Login</a>
   {% endif %}
   </span>
+  </div><!--end top-->
   
 </div> <!--end header-->
   
